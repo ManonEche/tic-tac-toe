@@ -1,11 +1,13 @@
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import Content from "@/components/content/Content";
 
 export default function Home() {
   return (
-    <main className="bg-tictactoe">
+    <div className="bg-tictactoe">
       <Header />
+      <Content />
       <Footer/>
-    </main>
+    </div>
   );
 }
