@@ -8,10 +8,10 @@ export default function Content() {
 
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
-  const [selectedBoard, setSelectedBoard] = useState(1);
+  const [selectedBoard, setSelectedBoard] = useState(0);
 
   const boardImages = [
-    "/basket.webp",
+    "/basketbao.webp",
     "/beach.webp",
     "/biscuit.webp",
     "/galaxy.webp",
@@ -21,6 +21,46 @@ export default function Content() {
     "/sakura.webp",
     "/sushimat.webp"
   ]
+
+  const pawnsForBoards = {
+    0: {
+      X: "/basketpawn1.webp",
+      O: "/basketpawn2.webp",
+    },
+    1: {
+      X: "/beachpawn1.webp",
+      O: "/beachpawn2.webp",
+    },
+    2: {
+      X: "/biscuitpawn1.webp",
+      O: "/biscuitpawn2.webp",
+    },
+    3: {
+      X: "/galaxypawn1.webp",
+      O: "/galaxypawn2.webp",
+    },
+    4: {
+      X: "/nenupharpawn1.webp",
+      O: "/nenupharpawn2.webp",
+    },
+    5: {
+      X: "/orangepawn1.webp",
+      O: "/orangepawn2.webp",
+    },
+    6: {
+      X: "/platterpawn1.webp",
+      O: "/platterpawn2.webp",
+    },
+    7: {
+      X: "/sakurapawn1.webp",
+      O: "/sakurapawn2.webp",
+    },
+    8: {
+      X: "/sushimatpawn1.webp",
+      O: "/sushimatpawn2.webp",
+    }
+
+  }
 
   const handleClick = (index) => {
     if (board[index] || calculateWinner(board)) return;
@@ -55,7 +95,7 @@ export default function Content() {
 
         {board[index] && (
           <Image
-            src={`/${board[index] === "X" ? "beachpawn1.webp" : "beachpawn2.webp"}`}
+            src={pawnsForBoards[selectedBoard][board[index]]}
             width={160}
             height={160}
             alt="Pion"
@@ -67,6 +107,8 @@ export default function Content() {
 
   const changeBoard = () => {
     setSelectedBoard((prevIndex) => (prevIndex + 1) % boardImages.length);
+    setBoard(Array(9).fill(null));
+    setIsXNext(true);
   }
 
   function calculateWinner(board) {
