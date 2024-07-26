@@ -8,6 +8,19 @@ export default function Content() {
 
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [selectedBoard, setSelectedBoard] = useState(1);
+
+  const boardImages = [
+    "/basket.webp",
+    "/beach.webp",
+    "/biscuit.webp",
+    "/galaxy.webp",
+    "/nenuphar.webp",
+    "/orange.webp",
+    "/platter.webp",
+    "/sakura.webp",
+    "/sushimat.webp"
+  ]
 
   const handleClick = (index) => {
     if (board[index] || calculateWinner(board)) return;
@@ -52,6 +65,10 @@ export default function Content() {
     </div>
   )
 
+  const changeBoard = () => {
+    setSelectedBoard((prevIndex) => (prevIndex + 1) % boardImages.length);
+  }
+
   function calculateWinner(board) {
     const lines = [
       [0, 1, 2],
@@ -76,8 +93,18 @@ export default function Content() {
   return (
     <main className="px-6 py-8 flex flex-col justify-center items-center">
       <div className="text-2xl">{status}</div>
+
+      <div className="text-lg my-6">
+        <button
+          onClick={changeBoard}
+          className="hover:opacity-85 text-lg py-3 px-6 rounded-full bg-gradient-to-r from-primary to-secondary"
+        >
+          Changer le plateau
+        </button>
+      </div>
+
       <div className="relative w-2/4 aspect-square">
-        <Image src="/beach.webp" width={2000} height={2000} alt="Plateau" className="w-full h-auto" />
+        <Image src={boardImages[selectedBoard]} width={2000} height={2000} alt="Plateau" className="w-full h-auto" />
         {handleSquare(0, 'top-0 left-0')}
         {handleSquare(1, 'top-0 left-1/3')}
         {handleSquare(2, 'top-0 left-2/3')}
