@@ -11,7 +11,7 @@ export default function Content() {
   const [selectedBoard, setSelectedBoard] = useState(0);
 
   const boardImages = [
-    "/basketbao.webp",
+    "/basket.webp",
     "/beach.webp",
     "/biscuit.webp",
     "/galaxy.webp",
@@ -133,10 +133,10 @@ export default function Content() {
   }
 
   return (
-    <main className="px-6 py-8 flex flex-col justify-center items-center">
+    <main className="px-6 py-12 flex flex-col justify-center items-center">
       <div className="text-2xl">{status}</div>
 
-      <div className="text-lg my-6">
+      <div className="text-lg mt-8 mb-10">
         <button
           onClick={changeBoard}
           className="hover:opacity-85 text-lg py-3 px-6 rounded-full bg-gradient-to-r from-primary to-secondary"
@@ -145,7 +145,7 @@ export default function Content() {
         </button>
       </div>
 
-      <div className="relative w-2/4 aspect-square">
+      <div className="relative w-4/4 md:w-2/4 aspect-square">
         <Image src={boardImages[selectedBoard]} width={2000} height={2000} alt="Plateau" className="w-full h-auto" />
         {handleSquare(0, 'top-0 left-0')}
         {handleSquare(1, 'top-0 left-1/3')}
