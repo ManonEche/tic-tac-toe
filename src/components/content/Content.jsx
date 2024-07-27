@@ -145,7 +145,7 @@ export default function Content() {
         </button>
       </div>
 
-      <div className="relative w-4/4 md:w-2/4 aspect-square">
+      <div className="relative w-4/4 md:w-2/4 xl:2/5 aspect-square">
         <Image src={boardImages[selectedBoard]} width={2000} height={2000} alt="Plateau" className="w-full h-auto" />
         {handleSquare(0, 'top-0 left-0')}
         {handleSquare(1, 'top-0 left-1/3')}
@@ -161,7 +161,7 @@ export default function Content() {
         <Confetti
           width={1200}
           height={1200}
-          className="w-screen h-screen"
+          className="w-screen h-full"
         />
       )}
     </main>
